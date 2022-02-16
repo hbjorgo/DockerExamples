@@ -1,17 +1,15 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
 
-COPY ./ConsoleApplication.csproj ./App/ConsoleApplication.csproj
-RUN dotnet restore ./App/ConsoleApplication.csproj
+COPY . ./app/
 
-COPY . ./App/
+WORKDIR ./app/
 
-WORKDIR ./App/
-
+RUN dotnet restore "ConsoleApplication.csproj"
 RUN dotnet build "ConsoleApplication.csproj" -c Release --no-restore
 RUN dotnet publish "ConsoleApplication.csproj" -c Release --no-restore --no-build -o /publish
 
-FROM mcr.microsoft.com/dotnet/runtime:6.0
+FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine
 
-COPY --from=build ./publish/ App/
-WORKDIR /App
+COPY --from=build ./publish/ ./app/
+WORKDIR ./app/
 ENTRYPOINT ["dotnet", "ConsoleApplication.dll"]
