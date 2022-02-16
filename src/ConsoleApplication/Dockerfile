@@ -10,7 +10,7 @@ WORKDIR ./App/
 RUN dotnet build "ConsoleApplication.csproj" -c Release --no-restore
 RUN dotnet publish "ConsoleApplication.csproj" -c Release --no-restore --no-build -o /publish
 
-FROM mcr.microsoft.com/dotnet/runtime:6.0
+FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine
 
 COPY --from=build ./publish/ App/
 WORKDIR /App
