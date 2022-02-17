@@ -9,7 +9,7 @@ WORKDIR ./app/
 
 RUN dotnet publish "ConsoleApplication.csproj" -c Release -p:PublishSingleFile=true -r alpine-x64 --self-contained true -p:PublishTrimmed=true -o /publish
 
-FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-alpine as final
 
 COPY --from=build ./publish/ ./app/
 WORKDIR ./app/
