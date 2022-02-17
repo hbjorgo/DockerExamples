@@ -64,6 +64,7 @@ Use .dockerignore to ignore unnecessary files and folders to reduce context size
 - Observe output like this:  ```=> => transferring context: 1.39kB```
 - Run ```docker run example6``` to verify that it works
 
+## Security
 ### Example 7
 Run application as non-root user
 
