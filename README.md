@@ -63,3 +63,14 @@ Use .dockerignore to ignore unnecessary files and folders to reduce context size
 - Run ```docker build -f Dockerfile6 -t example6 .```
 - Observe output like this:  ```=> => transferring context: 1.39kB```
 - Run ```docker run example6``` to verify that it works
+
+### Example 7
+Run application as non-root user
+
+Docker images defaults to root user. This is a potential security issue if someone manages to get access to the container.
+Create a user with the minimum required privileges and run the application as this uses.
+
+- Add ```Thread.Sleep(100_000);``` on line 2 in ```Program.cs``` to prevent the application from exiting right away.
+- Run ```docker build -f Dockerfile7 -t example7 .```
+- Run ```docker run example7```
+- Get a shell in the container and run ```whoami``` to print the name of the current user. ```groups``` lists the groups the current user is a member of.
