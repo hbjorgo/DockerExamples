@@ -75,3 +75,6 @@ Create a user with the minimum required privileges and run the application as th
 - Run ```docker build -f Dockerfile7 -t example7 .```
 - Run ```docker run example7```
 - Get a shell in the container and run ```whoami``` to print the name of the current user. ```groups``` lists the groups the current user is a member of.
+
+## Useful commands
+- ```docker history <image>``` shows the history of an image
