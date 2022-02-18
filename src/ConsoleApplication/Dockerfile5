@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
 
-COPY ./ConsoleApplication.csproj ./App/ConsoleApplication.csproj
-RUN dotnet restore ./App/ConsoleApplication.csproj
+COPY ./ConsoleApplication.csproj ./app/ConsoleApplication.csproj
+RUN dotnet restore ./app/ConsoleApplication.csproj
 
 COPY . ./app/
 
